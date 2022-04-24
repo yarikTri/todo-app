@@ -1,9 +1,13 @@
 package service
 
-import "github.com/yarikTri/todo-app/package/repository"
+import (
+	"github.com/yarikTri/todo-app"
+	"github.com/yarikTri/todo-app/package/repository"
+)
 
 // Authorization declares what Auth supposed to implement
 type Authorization interface {
+	CreateUser(user todo.User) (id int, err error)
 }
 
 // TodoList declares what List supposed to implement
@@ -22,6 +26,8 @@ type Service struct {
 }
 
 // NewService basicly inits new Service
-func NewService(repos *repository.Repository) *Service {
-	return &Service{}
+func NewService(repo *repository.Repository) *Service {
+	return &Service{
+		Authorization: NewAuthService(repo.Authorization),
+	}
 }

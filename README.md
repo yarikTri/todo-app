@@ -1,6 +1,5 @@
 # todo-app
 Learning web basics in practice
-<<<<<<< HEAD
 Entirely based on Maksim Zhasckevych's Rest API YouTube course
 =======
 
